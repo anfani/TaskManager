@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="init" />
+    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_manager/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_manager/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task_manager/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_manager/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;anfani&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/anfani/work_project1.git&quot;,
+    &quot;accountId&quot;: &quot;d26f7ffa-55b6-4421-b551-55f688aa6745&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
@@ -95,7 +112,8 @@
       <updated>1729001982632</updated>
       <workItem from="1729001986501" duration="1616000" />
       <workItem from="1729003674900" duration="3833000" />
-      <workItem from="1729007819542" duration="351000" />
+      <workItem from="1729007819542" duration="556000" />
+      <workItem from="1729087932670" duration="1212000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -105,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729008061484</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1729008282097</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729008282097</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
