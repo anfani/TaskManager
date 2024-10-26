@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="добавил swagger">
+    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="21.10 починил админку">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task_manager/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/task_manager/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +53,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Django Server.task_manager.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: users.tests.AuthenticationTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: users.tests.AuthenticationTestCase.test_user_login.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: users.tests.TaskCRUDTestCase.test_create_task.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for tests.AuthenticationTestCase.test_user_login.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -68,7 +68,70 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django tests.Test: users.tests.AuthenticationTestCase.test_user_login">
+    <configuration name="Test: users.tests.AuthenticationTestCase" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="task_manager" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="users.tests.AuthenticationTestCase" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: users.tests.AuthenticationTestCase.test_user_login" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="task_manager" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="users.tests.AuthenticationTestCase.test_user_login" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: users.tests.TaskCRUDTestCase.test_create_task" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="task_manager" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="users.tests.TaskCRUDTestCase.test_create_task" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="task_manager" type="Python.DjangoServer" factoryName="Django server">
       <module name="task_manager" />
       <option name="ENV_FILES" value="" />
@@ -95,6 +158,30 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for tests.AuthenticationTestCase.test_user_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="task_manager" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/users" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;tests.AuthenticationTestCase.test_user_login&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: users.tests.AuthenticationTestCase.test_user_login" />
+        <item itemvalue="Python tests.Python tests for tests.AuthenticationTestCase.test_user_login" />
+        <item itemvalue="Django tests.Test: users.tests.AuthenticationTestCase" />
+        <item itemvalue="Django tests.Test: users.tests.TaskCRUDTestCase.test_create_task" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -120,7 +207,9 @@
       <workItem from="1729179668996" duration="613000" />
       <workItem from="1729263732529" duration="1000" />
       <workItem from="1729422125956" duration="673000" />
-      <workItem from="1729519500120" duration="418000" />
+      <workItem from="1729519500120" duration="2409000" />
+      <workItem from="1729521941191" duration="160000" />
+      <workItem from="1729616580012" duration="34000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -146,7 +235,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729089444431</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="21.10 починил админку">
+      <option name="closed" value="true" />
+      <created>1729519958562</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729519958562</updated>
+    </task>
+    <task id="LOCAL-00005" summary="21.10 починил админку">
+      <option name="closed" value="true" />
+      <created>1729519965437</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729519965437</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +260,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="добавил swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавил swagger" />
+    <MESSAGE value="21.10 починил админку" />
+    <option name="LAST_COMMIT_MESSAGE" value="21.10 починил админку" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/task_manager$Test__users_tests_AuthenticationTestCase_test_user_login.coverage" NAME="Test: users.tests.AuthenticationTestCase.test_user_login Coverage Results" MODIFIED="1729522076462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/task_manager$Test__users_tests_TaskCRUDTestCase_test_create_task.coverage" NAME="Test: users.tests.TaskCRUDTestCase.test_create_task Coverage Results" MODIFIED="1729521838386" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/task_manager$Test__users_tests_AuthenticationTestCase.coverage" NAME="Test: users.tests.AuthenticationTestCase Coverage Results" MODIFIED="1729521845715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/task_manager$.coverage" NAME=" Coverage Results" MODIFIED="1729521979330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/users" />
   </component>
 </project>

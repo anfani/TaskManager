@@ -3,6 +3,7 @@ from rest_framework import status
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from users.models import Task
+from django.test import TestCase
 
 User = get_user_model()
 
@@ -10,35 +11,51 @@ class AuthenticationTestCase(APITestCase):
     def setUp(self):
         self.client = APIClient()
         self.register_url = reverse('user-list')  # Эндпоинт для создания пользователя
+        self.registration_url = reverse('user-registration')
         self.token_url = reverse('token_obtain_pair')  # Эндпоинт для получения токена (по умолчанию /api/token/)
 
         self.user_data = {
-            "username": "testuser",
+            "email": "testuser@example.com",
             "password": "testpassword123"
         }
 
     def test_user_registration(self):
-        response = self.client.post(self.register_url, self.user_data)
+        # Данные для регистрации пользователя
+        registration_data = {
+            "email": "testuser@example.com",
+            "password": "testpassword123",
+            # Другие необходимые данные для регистрации
+        }
+        # Отправляем запрос на регистрацию пользователя
+        response = self.client.post(self.registration_url, registration_data)
+        # Проверяем, что запрос был успешным
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertIn("username", response.data)
 
     def test_user_login(self):
-        # Сначала регистрируем пользователя
-        User.objects.create_user(username="testuser", password="testpassword123")
+        # Сначала регистрируем пользователя с email, т.к. используется кастомная модель пользователя
+        User.objects.create_user(email="testuser@example.com", password="testpassword123")
+        # Определяем данные для входа, используя email вместо username
+        self.user_data = {
+            "email": "testuser@example.com",
+            "password": "testpassword123"
+        }
         # Затем пытаемся получить JWT токен
         response = self.client.post(self.token_url, self.user_data)
+        # Проверяем, что запрос был успешным
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # Проверяем, что в ответе присутствует токен доступа
         self.assertIn("access", response.data)
+
 
 class TaskCRUDTestCase(APITestCase):
     def setUp(self):
         # Создаем пользователя
         self.client = APIClient()
-        self.user = User.objects.create_user(username="testuser", password="testpassword123")
+        self.user = User.objects.create_user(email="testuser@example.com", password="testpassword123")
 
         # Получаем токен
         self.token_url = reverse('token_obtain_pair')
-        response = self.client.post(self.token_url, {"username": "testuser", "password": "testpassword123"})
+        response = self.client.post(self.token_url, {"email": "testuser@example.com", "password": "testpassword123"})
         self.assertEqual(response.status_code, status.HTTP_200_OK, "Ошибка при получении токена")
         self.access_token = response.data.get("access")
 
@@ -54,7 +71,7 @@ class TaskCRUDTestCase(APITestCase):
             "description": "Test Task Description",
             "status": "новая"
         }
-        response = self.client.post(self.tasks_url, task_data)
+        response = self.client.post(self.tasks_url, task_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], task_data["title"])
 

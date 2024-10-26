@@ -1,19 +1,14 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import User
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .models import User, Task
 from .serializers import UserSerializer, TaskSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    CRUD для пользователей.
-    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
-    """
-    CRUD для задач. Доступ к задачам только у владельца.
-    """
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated]
 
