@@ -4,6 +4,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .models import User, Task
 from .serializers import UserSerializer, TaskSerializer
 
+
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -17,3 +19,4 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
