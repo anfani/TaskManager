@@ -1,0 +1,7 @@
+# pyproject.toml
+[tool.isort]
+profile = "black"  # если используете black для форматирования, это облегчит совместимость
+line_length = 120   # по умолчанию flake8 и PEP8 используют длину строки 79 символов
+multi_line_output = 3
+include_trailing_comma = true
+known_third_party = ["django", "rest_framework"]  # добавьте используемые сторонние библиотеки

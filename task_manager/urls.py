@@ -15,16 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
-from . import views
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
+from django.urls import include, path
 from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+from . import views
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -38,7 +35,6 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
     authentication_classes=(),
-        
 )
 
 # Swagger UI будет использовать JWT токены через Bearer авторизацию.
