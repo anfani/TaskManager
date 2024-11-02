@@ -1,109 +1,158 @@
-from django.contrib.auth import get_user_model
-from django.urls import reverse
+from django.test import TestCase
+from rest_framework.test import APIClient
 from rest_framework import status
-from rest_framework.test import APIClient, APITestCase
-
-from users.models import Task
-
-User = get_user_model()
+from .models import User, Task
 
 
-class AuthenticationTestCase(APITestCase):
+class UserAPITest(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.register_url = reverse('user-list')  # Эндпоинт для создания пользователя
-        self.registration_url = reverse('user-registration')
-        self.token_url = reverse('token_obtain_pair')  # Эндпоинт для получения токена (по умолчанию /api/token/)
-
         self.user_data = {
             "email": "testuser@example.com",
-            "password": "testpassword123"
+            "name": "Test User",
+            "password": "password123"
         }
+        self.user = User.objects.create_user(**self.user_data)
+        self.client.force_authenticate(user=self.user)
 
-    def test_user_registration(self):
-        # Данные для регистрации пользователя
-        registration_data = {
-            "email": "testuser@example.com",
-            "password": "testpassword123",
-            # Другие необходимые данные для регистрации
+    def test_create_user(self):
+        new_user_data = {
+            "email": "newuser@example.com",
+            "name": "New User",
+            "password": "newpassword123"
         }
-        # Отправляем запрос на регистрацию пользователя
-        response = self.client.post(self.registration_url, registration_data)
-        # Проверяем, что запрос был успешным
+        response = self.client.post('/api/users/', data=new_user_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(User.objects.count(), 2)
 
-    def test_user_login(self):
-        # Сначала регистрируем пользователя с email, т.к. используется кастомная модель пользователя
-        User.objects.create_user(email="testuser@example.com", password="testpassword123")
-        # Определяем данные для входа, используя email вместо username
-        self.user_data = {
-            "email": "testuser@example.com",
-            "password": "testpassword123"
-        }
-        # Затем пытаемся получить JWT токен
-        response = self.client.post(self.token_url, self.user_data)
-        # Проверяем, что запрос был успешным
+    def test_get_user_list(self):
+        response = self.client.get('/api/users/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Проверяем, что в ответе присутствует токен доступа
-        self.assertIn("access", response.data)
+        self.assertEqual(len(response.data), 1)
+
+    def test_update_user(self):
+        updated_data = {
+            "name": "Updated User",
+            "email": self.user.email,  # Обязательно указываем email, так как он является уникальным полем
+            "password": "password123"  # Добавляем пароль, так как он обязателен для обновления
+        }
+        response = self.client.put(f'/api/users/{self.user.id}/', data=updated_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.name, updated_data['name'])
+
+    def test_delete_user(self):
+        response = self.client.delete(f'/api/users/{self.user.id}/')
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(User.objects.count(), 0)
 
 
-class TaskCRUDTestCase(APITestCase):
+class TaskAPITest(TestCase):
     def setUp(self):
-        # Создаем пользователя
         self.client = APIClient()
-        self.user = User.objects.create_user(email="testuser@example.com", password="testpassword123")
-
-        # Получаем токен
-        self.token_url = reverse('token_obtain_pair')
-        response = self.client.post(self.token_url, {"email": "testuser@example.com", "password": "testpassword123"})
-        self.assertEqual(response.status_code, status.HTTP_200_OK, "Ошибка при получении токена")
-        self.access_token = response.data.get("access")
-
-        # Добавляем токен к заголовкам
-        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
-
-        # Создаем URL для задач
-        self.tasks_url = reverse('task-list')
-
-    def test_create_task(self):
-        task_data = {
+        self.user = User.objects.create_user(email="taskuser@example.com", name="Task User", password="password123")
+        self.client.force_authenticate(user=self.user)
+        self.task_data = {
             "title": "Test Task",
-            "description": "Test Task Description",
+            "description": "Test Description",
             "status": "новая"
         }
-        response = self.client.post(self.tasks_url, task_data, format='json')
+        self.task = Task.objects.create(user=self.user, title=self.task_data['title'], description=self.task_data['description'], status=self.task_data['status'])
+
+    def test_create_task(self):
+        create_data = {
+            "title": "New Task",
+            "description": "New Task Description",
+            "status": "новая",
+            "user": self.user.id
+        }
+        response = self.client.post('/api/tasks/', data=create_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data["title"], task_data["title"])
+        self.assertEqual(Task.objects.count(), 2)
 
     def test_get_task_list(self):
-        # Создаем несколько задач
-        Task.objects.create(title="Test Task 1", description="Description 1", status="новая", user=self.user)
-        Task.objects.create(title="Test Task 2", description="Description 2", status="в процессе", user=self.user)
-
-        response = self.client.get(self.tasks_url)
+        response = self.client.get('/api/tasks/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
+        self.assertEqual(len(response.data), 1)
 
     def test_update_task(self):
-        # Создаем задачу
-        task = Task.objects.create(title="Test Task", description="Description", status="новая", user=self.user)
-        update_url = reverse('task-detail', args=[task.id])
-
         updated_data = {
-            "title": "Updated Task",
+            "title": "Updated Task Title",
             "description": "Updated Description",
-            "status": "завершена"
+            "status": "в процессе",
+            "user": self.user.id  # Добавляем поле user, так как оно обязательно для обновления
         }
-
-        response = self.client.put(update_url, updated_data)
+        response = self.client.put(f'/api/tasks/{self.task.id}/', data=updated_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["title"], updated_data["title"])
+        self.task.refresh_from_db()
+        self.assertEqual(self.task.title, updated_data['title'])
+        self.assertEqual(self.task.status, updated_data['status'])
 
     def test_delete_task(self):
-        # Создаем задачу
-        task = Task.objects.create(title="Test Task", description="Description", status="новая", user=self.user)
-        delete_url = reverse('task-detail', args=[task.id])
-
-        response = self.client.delete(delete_url)
+        response = self.client.delete(f'/api/tasks/{self.task.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(Task.objects.count(), 0)
+
+
+class AuthenticationTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.user_data = {
+            "email": "authuser@example.com",
+            "name": "Auth User",
+            "password": "password123"
+        }
+        self.user = User.objects.create_user(**self.user_data)
+
+    def test_access_protected_route_without_authentication(self):
+        response = self.client.get('/api/tasks/')
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_access_protected_route_with_authentication(self):
+        self.client.force_authenticate(user=self.user)
+        response = self.client.get('/api/tasks/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_token_authentication(self):
+        response = self.client.post('/api/token/', {"email": self.user.email, "password": "password123"}, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('access', response.data)
+        self.assertIn('refresh', response.data)
+
+
+class InputValidationTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.user = User.objects.create_user(email="validationuser@example.com", name="Validation User", password="password123")
+        self.client.force_authenticate(user=self.user)
+
+    def test_create_task_with_missing_fields(self):
+        invalid_data = {
+            "description": "Missing title field",
+        }
+        response = self.client.post('/api/tasks/', data=invalid_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('title', response.data)
+
+    def test_create_user_with_invalid_email(self):
+        invalid_user_data = {
+            "email": "not-an-email",
+            "name": "Invalid Email User",
+            "password": "password123"
+        }
+        response = self.client.post('/api/users/', data=invalid_user_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('email', response.data)
+
+
+class CoreRoutesTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_index_page(self):
+        response = self.client.get('/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_task_description_page(self):
+        response = self.client.get('/task_decription/')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
