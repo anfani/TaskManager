@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from datetime import timedelta
-from pathlib import Path
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
