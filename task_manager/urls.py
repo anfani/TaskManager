@@ -1,18 +1,18 @@
 """
-URL configuration for task_manager project.
+Конфигурация URL для проекта task_manager.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+Список `urlpatterns` перенаправляет URL-адреса на представления. Дополнительную информацию см. по ссылке:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+Примеры:
+Функциональные представления
+    1. Добавьте импорт:  from my_app import views
+    2. Добавьте URL в urlpatterns:  path('', views.home, name='home')
+Классовые представления
+    1. Добавьте импорт:  from other_app.views import Home
+    2. Добавьте URL в urlpatterns:  path('', Home.as_view(), name='home')
+Включение другого URLconf
+    1. Импортируйте функцию include(): from django.urls import include, path
+    2. Добавьте URL в urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import include, path
@@ -39,6 +39,8 @@ schema_view = get_schema_view(
 
 # Swagger UI будет использовать JWT токены через Bearer авторизацию.
 swagger_schema_view = schema_view.with_ui('swagger', cache_timeout=0)
+
+# Определение URL шаблонов для проекта.
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
@@ -47,5 +49,5 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('task_decription/', views.task_description, name='task_decription'),
+    path('task_description/', views.task_description, name='task_description'),
 ]

@@ -3,7 +3,22 @@ from django.db import models
 
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, password=None, **extra_fields):
+    """
+    Менеджер для пользовательской модели User.
+    """
+
+    def create_user(self, email: str, password: str = None, **extra_fields) -> 'User':
+        """
+        Создает и сохраняет пользователя с указанным email и паролем.
+
+        Args:
+            email (str): Адрес электронной почты пользователя.
+            password (str, optional): Пароль пользователя.
+            **extra_fields: Дополнительные поля пользователя.
+
+        Returns:
+            User: Созданный пользователь.
+        """
         if not email:
             raise ValueError('Email должен быть указан')
         email = self.normalize_email(email)
@@ -12,7 +27,18 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password=None, **extra_fields):
+    def create_superuser(self, email: str, password: str = None, **extra_fields) -> 'User':
+        """
+        Создает и сохраняет суперпользователя с указанным email и паролем.
+
+        Args:
+            email (str): Адрес электронной почты суперпользователя.
+            password (str, optional): Пароль суперпользователя.
+            **extra_fields: Дополнительные поля пользователя.
+
+        Returns:
+            User: Созданный суперпользователь.
+        """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
@@ -34,7 +60,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
 
@@ -54,5 +80,5 @@ class Task(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='новая')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.title
