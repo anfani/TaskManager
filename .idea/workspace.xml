@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="21.10 починил админку">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-    </list>
+    <list default="true" id="f43a3fd4-8453-473c-b436-d71899fe1774" name="Changes" comment="21.10 починил админку" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,25 +47,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Django Server.task_manager.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: users.tests.AuthenticationTestCase.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: users.tests.AuthenticationTestCase.test_user_login.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: users.tests.TaskCRUDTestCase.test_create_task.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for tests.AuthenticationTestCase.test_user_login.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Django Server.task_manager.executor": "Run",
+    "Django tests.Test: users.tests.AuthenticationTestCase.executor": "Run",
+    "Django tests.Test: users.tests.AuthenticationTestCase.test_user_login.executor": "Run",
+    "Django tests.Test: users.tests.TaskCRUDTestCase.test_create_task.executor": "Run",
+    "Python tests.Python tests for tests.AuthenticationTestCase.test_user_login.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/python-projects/work_project_users",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Django tests.Test: users.tests.AuthenticationTestCase.test_user_login">
+}]]></component>
+  <component name="RunManager" selected="Django Server.task_manager">
     <configuration name="Test: users.tests.AuthenticationTestCase" type="DjangoTestsConfigurationType" temporary="true">
       <module name="task_manager" />
       <option name="ENV_FILES" value="" />
@@ -210,6 +209,7 @@
       <workItem from="1729519500120" duration="2409000" />
       <workItem from="1729521941191" duration="160000" />
       <workItem from="1729616580012" duration="34000" />
+      <workItem from="1730752207695" duration="17000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
