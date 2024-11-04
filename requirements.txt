@@ -1,0 +1,15 @@
+# requirements.txt - Зависимости для проекта task_manager (Python 3.12)
+
+django>=5.1.2
+djangorestframework==3.15.2
+drf-yasg==1.21.7
+gunicorn>=21.0.0  # Сервер для запуска Django-приложения
+
+# JWT для аутентификации
+djangorestframework-simplejwt==5.3.1
+
+# Для тестирования
+pytest==7.4.0
+pytest-django==4.5.2
+flake8==7.1.1
+isort==5.13.2
