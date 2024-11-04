@@ -13,7 +13,7 @@ services:
 
   test:
     build: .
-    command: pytest
+    command: pytest -v task_manager/  --disable-warnings
     volumes:
       - .:/app
     environment:

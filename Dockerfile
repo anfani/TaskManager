@@ -11,7 +11,7 @@ COPY requirements.txt /app/
 
 # Устанавливаем зависимости и инструменты для проверки качества кода
 RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install flake8==7.1.1 isort==5.13.2
+    pip install setuptools flake8==7.1.1 isort==5.13.2
 
 # Копируем весь проект в рабочую директорию контейнера
 COPY . /app/

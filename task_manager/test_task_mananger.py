@@ -1,7 +1,8 @@
 from django.test import TestCase
-from rest_framework.test import APIClient
 from rest_framework import status
-from .models import User, Task
+from rest_framework.test import APIClient
+
+from users.models import Task, User
 
 
 class UserAPITest(TestCase):
@@ -75,7 +76,12 @@ class TaskAPITest(TestCase):
             "description": "Test Description",
             "status": "новая"
         }
-        self.task = Task.objects.create(user=self.user, title=self.task_data['title'], description=self.task_data['description'], status=self.task_data['status'])
+        self.task = Task.objects.create(
+            user=self.user,
+            title=self.task_data['title'],
+            description=self.task_data['description'],
+            status=self.task_data['status']
+        )
 
     def test_create_task(self) -> None:
         """
@@ -168,7 +174,12 @@ class InputValidationTest(TestCase):
     """
     def setUp(self) -> None:
         self.client = APIClient()
-        self.user = User.objects.create_user(email="validationuser@example.com", name="Validation User", password="password123")
+        self.user = User.objects.create_user(
+            email="validationuser@example.com",
+            name="Validation User",
+            password="password123"
+        )
+
         self.client.force_authenticate(user=self.user)
 
     def test_create_task_with_missing_fields(self) -> None:
