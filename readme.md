@@ -42,7 +42,7 @@ Task Manager — это приложение для управления зад�
 2. Создайте виртуальное окружение и активируйте его:
    ```sh
    python -m venv venv
-   source venv/bin/activate  # На Windows: venv\Scriptsctivate
+   source venv/bin/activate  # На Windows: venv\Scripts\ctivate
    ```
 
 3. Установите зависимости:
