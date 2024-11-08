@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Task, User
+from users.models import User
+from tasks.models import Task
 from .serializers import TaskSerializer, UserSerializer
 
 
