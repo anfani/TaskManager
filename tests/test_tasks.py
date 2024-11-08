@@ -1,9 +1,8 @@
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
-
-from users.models import User
 from tasks.models import Task
+from users.models import User
 
 
 class TaskAPITest(TestCase):
@@ -71,4 +70,3 @@ class TaskAPITest(TestCase):
         response = self.client.delete(f'/api/tasks/{self.task.id}/')
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Task.objects.count(), 0)
-

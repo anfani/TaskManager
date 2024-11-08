@@ -1,7 +1,5 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from users.models import User
-
 
 
 class Task(models.Model):
