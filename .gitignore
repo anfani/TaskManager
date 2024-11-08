@@ -1,0 +1,37 @@
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Конфиденциальные данные
+.env
+
+# Скомпилированные Python файлы
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Локальная база данных
+db.sqlite3
+
+# Логи и временные файлы
+*.log
+*.pot
+
+# Настройки IDE и редакторов
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Временные данные и медиафайлы
+media/
+staticfiles/
+
+# Файлы миграций Django
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/__pycache__/
+
+# Docker файлы
+*.pid

@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from datetime import timedelta
+from dotenv import load_dotenv
 
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
+
+load_dotenv()
 
 # Определение базового пути к проекту.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Дополнительная информация: https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # Секретный ключ. Храните его в тайне в продакшене!
-SECRET_KEY = 'django-insecure-p5!hjig!))*n9hv2)0t2ai5na)vcplnu4u*7254&x_*kv55x-5'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Настройка режима отладки. Не используйте режим отладки в продакшене!
 DEBUG = True
