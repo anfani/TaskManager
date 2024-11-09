@@ -1,3 +1,15 @@
+"""
+Модуль моделей пользователей для приложения Users.
+
+Содержит пользовательскую модель User и менеджер CustomUserManager:
+- User: настраиваемая модель пользователя, заменяющая стандартную модель Django.
+  Пользователи идентифицируются по email, включают базовые поля и права доступа.
+- CustomUserManager: менеджер модели пользователя, предоставляющий методы для создания
+  обычных пользователей и суперпользователей.
+
+Модель User совместима с системой аутентификации Django.
+"""
+
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models

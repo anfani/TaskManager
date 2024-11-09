@@ -1,4 +1,10 @@
-# task_manager/views.py
+"""
+Модуль представлений (views) для приложения Task Manager.
+
+Содержит функции-обработчики HTTP-запросов, возвращающие соответствующие HTML-страницы.
+Каждая функция принимает запрос пользователя и возвращает ответ в виде отрендеренной страницы.
+"""
+
 
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render

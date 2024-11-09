@@ -1,3 +1,14 @@
+"""
+Модуль сериализаторов для API приложения Task Manager.
+
+Содержит:
+- UserSerializer: сериализатор для модели пользователя. Поддерживает создание
+  нового пользователя с зашифрованным паролем и позволяет безопасно работать с данными.
+- TaskSerializer: сериализатор для модели задачи, предоставляющий преобразование данных
+  задач в формат JSON и обратно.
+"""
+
+
 from rest_framework import serializers
 from tasks.models import Task
 from users.models import User
