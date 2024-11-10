@@ -20,22 +20,19 @@ from rest_framework import permissions
 
 load_dotenv()
 
-# Определение базового пути к проекту.
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Основные настройки разработки - не подходят для использования в продакшене.
-# Дополнительная информация: https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# Секретный ключ. Храните его в тайне в продакшене!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# Настройка режима отладки. Не используйте режим отладки в продакшене!
+
 DEBUG = True
 
-# Разрешенные хосты для проекта.
+
 ALLOWED_HOSTS = []
 
-# Определение установленных приложений.
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,10 +46,10 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
-# Пользовательская модель пользователя.
+
 AUTH_USER_MODEL = 'users.User'
 
-# Определение используемых промежуточных программ (middleware).
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,10 +60,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Основной URL-конфигурационный файл проекта.
+
 ROOT_URLCONF = 'task_manager.urls'
 
-# Определение шаблонов.
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -83,11 +80,10 @@ TEMPLATES = [
     },
 ]
 
-# Определение WSGI приложения.
+
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
-# Настройки базы данных.
-# Подробнее: https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,8 +91,7 @@ DATABASES = {
     }
 }
 
-# Валидация паролей.
-# Подробнее: https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -112,22 +107,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Интернационализация.
-# Подробнее: https://docs.djangoproject.com/en/5.1/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Статические файлы (CSS, JavaScript, Изображения).
-# Подробнее: https://docs.djangoproject.com/en/5.1/howto/static-files/
+
 STATIC_URL = 'static/'
 
-# Тип первичного ключа по умолчанию.
-# Подробнее: https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Настройки Django REST Framework (DRF).
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -137,14 +129,14 @@ REST_FRAMEWORK = {
     ),
 }
 
-# Настройки JWT токенов.
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-# Настройки Swagger для автоматической документации API.
+
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
@@ -156,7 +148,7 @@ SWAGGER_SETTINGS = {
     },
 }
 
-# Определение схемы представления для Swagger.
+
 schema_view = get_schema_view(
     openapi.Info(
         title="My API",

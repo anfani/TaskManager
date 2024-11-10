@@ -17,8 +17,6 @@ from typing import Any
 
 from django.core.asgi import get_asgi_application
 
-# Установка переменной окружения для модуля настроек проекта.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'task_manager.settings')
 
-# Получение ASGI-приложения.
 application: Any = get_asgi_application()

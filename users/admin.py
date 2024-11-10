@@ -45,6 +45,6 @@ class TaskAdmin(admin.ModelAdmin):
     raw_id_fields = ('user',)
 
 
-# Регистрация моделей в админке с кастомными настройками
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Task, TaskAdmin)

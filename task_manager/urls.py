@@ -38,10 +38,10 @@ schema_view = get_schema_view(
     authentication_classes=(),
 )
 
-# Swagger UI будет использовать JWT токены через Bearer авторизацию.
+
 swagger_schema_view = schema_view.with_ui('swagger', cache_timeout=0)
 
-# Определение URL шаблонов для проекта.
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
