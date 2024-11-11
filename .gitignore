@@ -35,3 +35,6 @@ staticfiles/
 
 # Docker файлы
 *.pid
+
+# Ignore database files
+*.sqlite3
